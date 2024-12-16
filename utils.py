@@ -21,7 +21,7 @@ nltk.download('stopwords')
 stop_words = stopwords.words('english')
 wnl = WordNetLemmatizer()
 
-im_model = "model/image.h5"  # rock paper scissor (224, 224, 3)
+im_model = "image.h5"  # rock paper scissor (224, 224, 3)
 text_model = "model/text"  # sentiment (english)
 tabular_model = "model/tabular.zip"  # income (14-dim input)
 
