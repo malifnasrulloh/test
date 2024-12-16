@@ -22,35 +22,31 @@ stop_words = stopwords.words('english')
 wnl = WordNetLemmatizer()
 
 im_model = "image.h5"  # rock paper scissor (224, 224, 3)
-text_model = "model/text"  # sentiment (english)
-tabular_model = "model/tabular.zip"  # income (14-dim input)
+text_model = "text"  # sentiment (english)
+tabular_model = "tabular.zip"  # income (14-dim input)
 
 
 @st.cache_resource
 def download_model():
-    os.makedirs("model", exist_ok=True)
     if not os.path.isdir(text_model):
         gdown.download(
             "https://drive.google.com/file/d/1-0l8aK1fLZQb1VRaOMuZrPvfHDL2uNhy/view?usp=sharing",
             fuzzy=True,
-            output="model/",
         )
         with ZipFile(text_model + ".zip", "r") as f:
-            f.extractall(path="model")
+            f.extractall()
         f.close()
 
     if not os.path.isfile(tabular_model):
         gdown.download(
             "https://drive.google.com/file/d/1m2fKNGVKb5FqA5cv2NhUWM6brCjJvOJ1/view?usp=sharing",
             fuzzy=True,
-            output="model/",
         )
 
     if not os.path.isfile(im_model):
         gdown.download(
             "https://drive.google.com/file/d/1-1m6RTjU6Fkz9tfx9UW5QVH7VJXcbcl-/view?usp=sharing",
             fuzzy=True,
-            output="model/",
         )
 
 
