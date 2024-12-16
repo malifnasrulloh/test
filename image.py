@@ -2,6 +2,7 @@ import streamlit as st
 import utils
 from streamlit_card import card
 import numpy as np
+import numpy as np
 
 utils.download_model()
 model = utils.image_load_model()
@@ -63,9 +64,10 @@ if st.session_state["files"]:
         # Pilih kolom untuk menampilkan kartu secara bergantian
         column = col1 if i % 2 == 0 else col2
 
-        # Tampilkan kartu pada kolom yang sesuai
+
         with column:
             card(
+                key=str(np.random.randint(99999999)),
                 image="data:image/png;base64," + im_byte,
                 title=prediction,
                 text="",
